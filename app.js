@@ -7,7 +7,7 @@ const shop = {
   maxCust:0,
   cookiePerSale: 0,
   custPerHour: function (){
-    let customers = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust + 1))
+    let customers = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust + 1));
     return customers;
   },
 };
@@ -53,9 +53,9 @@ function hourCookies(locObj){
 
 //Generate daily sales
 function dailySales (locObj){
-  let daySales = [];  //initialize empty array for storage of daily sales data
-  let totalSales = 0;  //initialize total sales for storage
-  for (let i = 6, j = 0; i < 20; i++, j++){  //for loop that steps through from open hour to close hour
+  let daySales = []; //initialize empty array for storage of daily sales data
+  let totalSales = 0; //initialize total sales for storage
+  for (let i = 6, j = 0; i < 20; i++, j++){ //for loop that steps through from open hour to close hour
     let hourSales = [];
 
     //log the time

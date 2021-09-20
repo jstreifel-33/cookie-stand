@@ -1,3 +1,5 @@
+//  FRAMEWORK STUFF FOR APP FUNCTIONALITY
+
 //Shop creation template
 const shop = {
   location: '',
@@ -37,7 +39,6 @@ let parisShop = createShop(paris);
 let lima = ['Lima', 2, 16, 4.6];
 let limaShop = createShop(lima);
 
-
 //create function for calculating cookies sold per hour
 //6 AM to 8 PM (exclusive). Account for AM/PM. 6:00 to 20:00.
 //calculate total
@@ -51,7 +52,7 @@ function hourCookies(locObj){
 }
 
 //Generate daily sales
-function daySales (locObj){
+function dailySales (locObj){
   let daySales = [];  //initialize empty array for storage of daily sales data
   let totalSales = 0;  //initialize total sales for storage
   for (let i = 6, j = 0; i < 20; i++, j++){  //for loop that steps through from open hour to close hour
@@ -79,3 +80,51 @@ function daySales (locObj){
   locObj.todaySales = daySales;
 }
 
+//  ADDING SALES DATA TO SALES DOCUMENT VIA LABELLED DIV
+
+function addData(locObj) {
+  //Create a heading with the location of the shop
+  let locName = document.createElement('p');
+  locName.innerText = locObj.location;
+  let container = document.getElementById('sales');
+  container.appendChild(locName);
+
+  //Start a ul element to contain hourly count + total
+  let salesData = document.createElement('ul');
+  let hourlySales = locObj.todaySales;
+
+  //Step through todaySales data to publish each hour to page
+  for (let i = 0; i < locObj.todaySales.length; i++){
+    //create list item and decide what to fill it with.
+    let hour = document.createElement('li');
+    if(i < (locObj.todaySales.length - 1)){
+      let sales = hourlySales[i];
+      let text = sales[0] + sales[1] + ': ' + sales[2] + ' cookies';
+      hour.innerText = text;
+
+    }else if(i === (locObj.todaySales.length - 1)){ //final array item is total, change display of info
+      let totSales = hourlySales[i];
+      let text = totSales[0] + totSales[1] + 'cookies';
+      hour.innerText = text;
+    }
+    salesData.appendChild(hour);
+  }
+  //Add ul with each hour and total underneath heading.
+  container.appendChild(salesData);
+}
+
+// CREATE AND ADD SALES DATA FOR ALL SHOPS UPON LOAD
+dailySales(seattleShop);
+addData(seattleShop);
+
+dailySales(tokyoShop);
+addData(tokyoShop);
+
+dailySales(dubaiShop);
+addData(dubaiShop);
+
+dailySales(parisShop);
+addData(parisShop);
+
+dailySales(limaShop);
+addData(limaShop);

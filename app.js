@@ -33,3 +33,43 @@ let parisShop = createShop(paris);
 
 let lima = ['Lima', 2, 16, 4.6];
 let limaShop = createShop(lima);
+
+//create function for calculating cookies sold per hour
+//6 AM to 8 PM (exclusive). Account for AM/PM. 6:00 to 20:00.
+//calculate total
+//return array (15 length)
+//each hour = [hour, AM/PM, cookies sold]
+
+
+function hourCookies(locObj){
+  let cookies = Math.floor(locObj.cookiePerSale * locObj.custPerHour());
+  return cookies;
+}
+
+function daySales (locObj){
+  let daySales = [];  //initialize empty array for storage of daily sales data
+  let totalSales = 0;  //initialize total sales for storage
+  for (let i = 6, j = 0; i < 20; i++, j++){  //for loop that steps through from open hour to close hour
+    let hourSales = [];
+
+    //log the time
+    if(i < 13){
+      hourSales[0] = i;
+      hourSales[1] = 'am';
+    }else{
+      hourSales[0] = i-12;
+      hourSales[1] = 'pm';
+    }
+    //log cookies sold
+    hourSales[2] = hourCookies(locObj);
+    //Update total
+    totalSales += hourSales[2];
+
+    //store the hour's data and loop
+    daySales[j] = hourSales;
+  }
+  //return array of all hours' sales
+  daySales[daySales.length] = ['Total: ',totalSales]; //total will be only array with length = 2. Will be at end of daySales array.
+
+  locObj.todaySales = daySales;
+}

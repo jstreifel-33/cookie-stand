@@ -1,46 +1,29 @@
 //  FRAMEWORK STUFF FOR APP FUNCTIONALITY
 
 //Shop constructor. Accepts array in format we already use: [location, minCust, maxCust, cookiesPerSale]
-function NewShop(newLocation) {
+function CookieShop(newLocation) {
   this.location = newLocation[0];
   this.minCust = newLocation[1];
   this.maxCust = newLocation[2];
   this.cookiePerSale = newLocation[3];
+  this.todaySales = 0;
 }
 
-NewShop.prototype.custPerHour = function(){
+//Define CookieShop methods()
+//Generate and return a random number of customers
+CookieShop.prototype.custPerHour = function(){
   let customers = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust + 1));
   return customers;
 };
 
-//Add Existing shops shops to an array of shops
-let shopLocations = [];
-
-let seattle = ['Seattle', 23, 65, 6.3];
-shopLocations.push(NewShop(seattle));
-
-let tokyo = ['Tokyo', 3, 24, 1.2];
-shopLocations.push(NewShop(tokyo));
-
-let dubai = ['Dubai', 11, 20, 2];
-shopLocations.push(NewShop(dubai));
-
-let paris = ['Paris', 20, 38, 2.3];
-shopLocations.push(NewShop(paris));
-
-let lima = ['Lima', 2, 16, 4.6];
-shopLocations.push(NewShop(lima));
-
-console.log(shopLocations);
-
-//Caluclate cookies sold in 1 hour
-function hourCookies(locObj){
-  let cookies = Math.floor(locObj.cookiePerSale * locObj.custPerHour());
+//Calculate cookies sold in 1 hour
+CookieShop.prototype.hourCookies = function (){
+  let cookies = Math.floor(this.cookiePerSale * this.custPerHour());
   return cookies;
-}
+};
 
 //Generate daily sales
-function dailySales (locObj){
+CookieShop.prototype.dailySales = function (){
   let daySales = []; //initialize empty array for storage of daily sales data
   let totalSales = 0; //initialize total sales for storage
 
@@ -64,7 +47,7 @@ function dailySales (locObj){
     }
 
     //log cookies sold
-    hourSales[2] = hourCookies(locObj);
+    hourSales[2] = this.hourCookies();
     //Update total
     totalSales += hourSales[2];
 
@@ -74,8 +57,32 @@ function dailySales (locObj){
   //return array of all hours' sales
   daySales[daySales.length] = ['Total: ',totalSales]; //total will be only array with length = 2. Will be at end of daySales array.
 
-  locObj.todaySales = daySales;
-}
+  this.todaySales = daySales;
+};
+
+//Add Existing shops shops to an array of shops. This will allow storage/tracking of shops later without needing variable names.
+let shopLocations = [];
+
+let seattle = ['Seattle', 23, 65, 6.3];
+shopLocations.push(new CookieShop(seattle));
+
+let tokyo = ['Tokyo', 3, 24, 1.2];
+shopLocations.push(new CookieShop(tokyo));
+
+let dubai = ['Dubai', 11, 20, 2];
+shopLocations.push(new CookieShop(dubai));
+
+let paris = ['Paris', 20, 38, 2.3];
+shopLocations.push(new CookieShop(paris));
+
+let lima = ['Lima', 2, 16, 4.6];
+shopLocations.push(new CookieShop(lima));
+
+
+console.log(shopLocations);
+
+
+
 
 //  ADDING SALES DATA TO SALES DOCUMENT VIA LABELLED DIV
 

@@ -1,0 +1,14 @@
+td{
+  text-align: center;
+  border-bottom: thin solid black;
+}
+
+table{
+  border: medium solid black;
+  border-collapse:collapse;
+  width:100%;
+}
+
+th{
+  border:thin solid black;
+}

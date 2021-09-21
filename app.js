@@ -1,9 +1,14 @@
 //  FRAMEWORK STUFF FOR APP FUNCTIONALITY
 // GENERAL FUNCTIONS TO MAKE MY LIFE EASIER
-function newChildNode(parent, child, content){
-  let cell = document.createElement(child);
-  cell.innText = content;
-  parent.appendChild(child);
+function newTableHead(parent, content){
+  let cell = document.createElement('th');
+  cell.innerText = content;
+  parent.appendChild(cell);
+}
+function addTableCell(parent, content){
+  let cell = document.createElement('td');
+  cell.innerText = content;
+  parent.appendChild(cell);
 }
 
 //Shop constructor. Accepts array in format we already use: [location, minCust, maxCust, cookiesPerSale]
@@ -83,26 +88,27 @@ CookieShop.prototype.renderHeader = function(){
   let parentEl = document.getElementById('time');
   for(let i = 0; i < this.todaySales.length; i++){
     if(i < (this.todaySales.length - 1)){
-    let text = this.todaySales[i][1] + ":00" + this.todaySales[i][2];
-    newChildNode(parentEl, 'th', text);
-  }else{
-    let text = "Daily Location Total";
-    newChildNode(parentEl, 'th', text);
+      let text = this.todaySales[i][0] + ':00' + this.todaySales[i][1];
+      newTableHead(parentEl, text);
+    }else{
+      let text = 'Daily Location Total';
+      newTableHead(parentEl, text);
+    }
+    timeHeader = true;
   }
-  timeHeader = true;
-}
+};
 
 //Render this.todaySales data to appropriate row. Renders heading row if missing
 CookieShop.prototype.renderData = function(){
   if (!timeHeader){this.renderHeader()};
   let parentEl = document.getElementById(this.location);
   let text = this.location;
-  newChildNode(parentEl, 'th', text);
+  newTableHead(parentEl, text);
   for (let i = 0; i < this.todaySales.length; i++){
-    let text = this.todaySales[i][3];
-    newChildNode(parentEl, 'tr', text);
+    let text = this.todaySales[i][2];
+    addTableCell(parentEl, text);
   }
-}
+};
 
 
 //CREATION AND STORAGE OF SHOP OBJECTS
@@ -128,15 +134,21 @@ new CookieShop(newShop);
 
 console.log(shopLocations);
 
-//RENDER SALES DATA VIA TABLE
-//Initialize timeHeader state false.
-let timeHeader = false;
-
-
 // CREATE SALES DATA
-function refreshAll(){
+function refreshAllData(){
   for (let i = 0; i < shopLocations.length; i++){
     shopLocations[i].generateData();
   }
 }
-refreshAll();
+
+//RENDER SALES DATA VIA TABLE
+function renderTable(){
+  for (let i = 0; i < shopLocations.length; i++){
+    shopLocations[i].renderData();
+  }
+}
+
+//Initialize timeHeader state. Refresh data and render data to table.
+let timeHeader = false;
+refreshAllData();
+renderTable();

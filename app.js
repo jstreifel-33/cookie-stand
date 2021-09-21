@@ -1,43 +1,37 @@
 //  FRAMEWORK STUFF FOR APP FUNCTIONALITY
 
-//Shop creation template
-const shop = {
-  location: '',
-  minCust: 0,
-  maxCust:0,
-  cookiePerSale: 0,
-  custPerHour: function (){
-    let customers = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust + 1));
-    return customers;
-  },
-};
-
-//Shop add function
-function createShop(locArr){
-  let newShop = Object.assign({}, shop);
-  newShop.location = locArr[0];
-  newShop.minCust = locArr[1];
-  newShop.maxCust = locArr[2];
-  newShop.cookiePerSale = locArr[3];
-
-  return newShop;
+//Shop constructor. Accepts array in format we already use: [location, minCust, maxCust, cookiesPerSale]
+function NewShop(newLocation) {
+  this.location = newLocation[0];
+  this.minCust = newLocation[1];
+  this.maxCust = newLocation[2];
+  this.cookiePerSale = newLocation[3];
 }
 
-//Add current shops
+NewShop.prototype.custPerHour = function(){
+  let customers = this.minCust + Math.floor(Math.random() * (this.maxCust - this.minCust + 1));
+  return customers;
+};
+
+//Add Existing shops shops to an array of shops
+let shopLocations = [];
+
 let seattle = ['Seattle', 23, 65, 6.3];
-let seattleShop = createShop(seattle);
+shopLocations.push(NewShop(seattle));
 
 let tokyo = ['Tokyo', 3, 24, 1.2];
-let tokyoShop = createShop(tokyo);
+shopLocations.push(NewShop(tokyo));
 
 let dubai = ['Dubai', 11, 20, 2];
-let dubaiShop = createShop(dubai);
+shopLocations.push(NewShop(dubai));
 
 let paris = ['Paris', 20, 38, 2.3];
-let parisShop = createShop(paris);
+shopLocations.push(NewShop(paris));
 
 let lima = ['Lima', 2, 16, 4.6];
-let limaShop = createShop(lima);
+shopLocations.push(NewShop(lima));
+
+console.log(shopLocations);
 
 //Caluclate cookies sold in 1 hour
 function hourCookies(locObj){
@@ -118,17 +112,17 @@ function addData(locObj) {
 
 // CREATE AND ADD SALES DATA FOR ALL SHOPS UPON LOAD
 
-dailySales(seattleShop);
-addData(seattleShop);
+// dailySales(seattleShop);
+// addData(seattleShop);
 
-dailySales(tokyoShop);
-addData(tokyoShop);
+// dailySales(tokyoShop);
+// addData(tokyoShop);
 
-dailySales(dubaiShop);
-addData(dubaiShop);
+// dailySales(dubaiShop);
+// addData(dubaiShop);
 
-dailySales(parisShop);
-addData(parisShop);
+// dailySales(parisShop);
+// addData(parisShop);
 
-dailySales(limaShop);
-addData(limaShop);
+// dailySales(limaShop);
+// addData(limaShop);

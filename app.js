@@ -1,6 +1,6 @@
 'use strict'; //required for submission
 
-//    GENERAL TOOLS TO MAKE MY LIFE EASIER    //
+//    GENERAL TOOLS TO MAKE LIFE EASIER    //
 
 function newChildNode(parent, child, content){
   let cell = document.createElement(child);
@@ -88,10 +88,13 @@ CookieShop.prototype.generateData = function(){
 //Render header with times and total column. Set timeHeader to state = true.
 CookieShop.prototype.renderHeader = function(){
   let parentEl = document.getElementById('time');
+
   for(let i = 0; i < this.todaySales.length; i++){
+    //Set each column to say time based on todaySales property.
     if(i < (this.todaySales.length - 1)){
       let text = this.todaySales[i][0] + ':00' + this.todaySales[i][1];
       newChildNode(parentEl, 'th', text);
+    //Set last column to say Daily Location Total
     }else{
       let text = 'Daily Location Total';
       newChildNode(parentEl, 'th', text);
@@ -102,10 +105,12 @@ CookieShop.prototype.renderHeader = function(){
 
 //Render this.todaySales data to appropriate row. Renders heading row if missing
 CookieShop.prototype.renderData = function(){
-  if (!timeHeader){this.renderHeader()}
+  if (!timeHeader){this.renderHeader();}
+  //Add name to left header
   let parentEl = document.getElementById(this.location);
   let text = this.location;
   newChildNode(parentEl, 'th', text);
+  //step through hourly sales
   for (let i = 0; i < this.todaySales.length; i++){
     let text = this.todaySales[i][2];
     newChildNode(parentEl, 'td', text);
@@ -115,10 +120,13 @@ CookieShop.prototype.renderData = function(){
 
 //    CREATION AND STORAGE OF SHOP OBJECTS    //
 
-//Add Existing shops shops to an array of shops. This will allow storage/tracking of shops later without needing variable names.
+//Create array to store shop objects. This will allow storage/tracking of shops later without needing variable names.
 let shopLocations = [];
+
+//use newShop for temp storage of shop data. Can be used later for adding shops.
 let newShop = [];
 
+//Make Shops
 newShop = ['Seattle', 23, 65, 6.3];
 new CookieShop(newShop);
 
@@ -151,7 +159,7 @@ function renderTable(){
   }
 }
 
-//Generate array of hourly totals across all stores
+//Find hourly totals. Store in Array and render to table.
 function tableTotals(){
   let cookieTotals = [];
   for (let i=0; i < shopLocations.length; i++){

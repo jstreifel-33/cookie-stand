@@ -1,15 +1,15 @@
-//  FRAMEWORK STUFF FOR APP FUNCTIONALITY
-// GENERAL FUNCTIONS TO MAKE MY LIFE EASIER
-function newTableHead(parent, content){
-  let cell = document.createElement('th');
+'use strict'; //required for submission
+
+//    GENERAL TOOLS TO MAKE MY LIFE EASIER    //
+
+function newChildNode(parent, child, content){
+  let cell = document.createElement(child);
   cell.innerText = content;
   parent.appendChild(cell);
 }
-function addTableCell(parent, content){
-  let cell = document.createElement('td');
-  cell.innerText = content;
-  parent.appendChild(cell);
-}
+
+//    FRAMEWORK STUFF FOR APP FUNCTIONALITY   //
+
 
 //Shop constructor. Accepts array in format we already use: [location, minCust, maxCust, cookiesPerSale]
 function CookieShop(newLocation) {
@@ -71,9 +71,11 @@ CookieShop.prototype.dailySales = function (){
     //store the hour's data and loop
     daySales[j] = hourSales;
   }
-  //return array of all hours' sales
+
+  //Add daily total to end of array.
   daySales[daySales.length] = ['Total', null, totalSales]; //Total array length changed to match daily sales. Number goes in array[3] to render method easier to write
 
+  //Store daily sales in todaySales property.
   this.todaySales = daySales;
 };
 
@@ -89,10 +91,10 @@ CookieShop.prototype.renderHeader = function(){
   for(let i = 0; i < this.todaySales.length; i++){
     if(i < (this.todaySales.length - 1)){
       let text = this.todaySales[i][0] + ':00' + this.todaySales[i][1];
-      newTableHead(parentEl, text);
+      newChildNode(parentEl, 'th', text);
     }else{
       let text = 'Daily Location Total';
-      newTableHead(parentEl, text);
+      newChildNode(parentEl, 'th', text);
     }
     timeHeader = true;
   }
@@ -100,21 +102,22 @@ CookieShop.prototype.renderHeader = function(){
 
 //Render this.todaySales data to appropriate row. Renders heading row if missing
 CookieShop.prototype.renderData = function(){
-  if (!timeHeader){this.renderHeader()};
+  if (!timeHeader){this.renderHeader()}
   let parentEl = document.getElementById(this.location);
   let text = this.location;
-  newTableHead(parentEl, text);
+  newChildNode(parentEl, 'th', text);
   for (let i = 0; i < this.todaySales.length; i++){
     let text = this.todaySales[i][2];
-    addTableCell(parentEl, text);
+    newChildNode(parentEl, 'td', text);
   }
 };
 
 
-//CREATION AND STORAGE OF SHOP OBJECTS
+//    CREATION AND STORAGE OF SHOP OBJECTS    //
+
 //Add Existing shops shops to an array of shops. This will allow storage/tracking of shops later without needing variable names.
 let shopLocations = [];
-let newShop = []
+let newShop = [];
 
 newShop = ['Seattle', 23, 65, 6.3];
 new CookieShop(newShop);
@@ -131,24 +134,47 @@ new CookieShop(newShop);
 newShop = ['Lima', 2, 16, 4.6];
 new CookieShop(newShop);
 
+// console.log(shopLocations);
 
-console.log(shopLocations);
 
-// CREATE SALES DATA
+//    DATA CREATION AND TABLE RENDERING   //
+
 function refreshAllData(){
   for (let i = 0; i < shopLocations.length; i++){
     shopLocations[i].generateData();
   }
 }
 
-//RENDER SALES DATA VIA TABLE
 function renderTable(){
   for (let i = 0; i < shopLocations.length; i++){
     shopLocations[i].renderData();
   }
 }
 
-//Initialize timeHeader state. Refresh data and render data to table.
+//Generate array of hourly totals across all stores
+function tableTotals(){
+  let cookieTotals = [];
+  for (let i=0; i < shopLocations.length; i++){
+    let currentShop = shopLocations[i];
+    for (let j = 0; j < currentShop.todaySales.length; j++){
+      if (!cookieTotals[j]){cookieTotals[j] = 0;}
+      cookieTotals[j] += currentShop.todaySales[j][2];
+    }
+  }
+
+  let parentEl = document.getElementById('Totals');
+  let totalText = 'Totals';
+  newChildNode(parentEl, 'th', totalText);
+  for (let i = 0; i < cookieTotals.length; i++){
+    let text = cookieTotals[i];
+    newChildNode(parentEl, 'td', text);
+  }
+}
+
+//    ACTION    //
+
+//Initialize timeHeader state. Refresh data and render to table.
 let timeHeader = false;
 refreshAllData();
 renderTable();
+tableTotals();

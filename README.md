@@ -1,8 +1,8 @@
-# LAB - 06
+# LAB - 07
 
-## Getting Started on Salmon Cookies
+## Salmon Cookies Pt. 2
 
-Create and publish to sales page a list of simulated sales of salmon cookies based on initial data.
+Create objects using a constructor function and publish data to a table
 
 ### Authors: Joseph Streifel
 
@@ -13,8 +13,4 @@ Create and publish to sales page a list of simulated sales of salmon cookies bas
 
 ### Reflections and Comments
 
-This was the kind of project where I just had to remember to breathe. Keep cool, compartmentalize, and tackle each task individually.
-
-I got hung up initially on the idea of adding new shop objects down the line and how naming them will work, but I dropped it when I realized that I actually had a lot of other tasks to worry about. Still haven't figured it out, but I don't think it's that significant for today.
-
-All in all, I'm happy with what I have so far.
+Constructor functions really help cut back on clutter. I had a "hacky" solution before, but a shop constructor has been properly implemented with this iteration. My data got a little out of hand, so I may revisit this and try to make the code leaner if I can find the chance in the future.

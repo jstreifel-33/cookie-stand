@@ -122,6 +122,7 @@ main{
 }
 
 #about h2{
+  text-decoration: underline;
   text-align: center;
   font-family:'Courier New', Courier, monospace;
   display:block;
@@ -135,7 +136,7 @@ main{
 }
 
 #about p{
-  margin:5px;
+  margin:10px;
 }
 
 /* LOCATIONS */
@@ -162,15 +163,17 @@ main{
 }
 
 .store{
+  box-sizing: border-box;
   background-color: var(--l-green);
   border:thick var(--d-salmon) solid;
   display: inline-block;
   width:300px;
   margin:10px;
+  padding:5px;
   color:var(--d-salmon);
 }
 
-.location{
+.storeLoc{
   font-size: larger;
   font-weight: bold;
   text-decoration: underline;

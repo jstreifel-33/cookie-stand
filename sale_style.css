@@ -18,6 +18,7 @@ td{
 }
 
 table{
+  background-color: var(--l-green);
   border: thin solid black;
   border-collapse:collapse;
   width:100%;

@@ -100,9 +100,45 @@ main{
   border:thick var(--d-salmon) solid;
 }
 
-div#about img{
-  
+/* ABOUT */
+
+#about img{
+  display:inline-block;
+  width:500px;
+  height:auto;
+  margin:10px;
+  border:thick solid var(--d-salmon);
 }
+
+#aboutText{
+  background-color: var(--l-green);
+  border:thick var(--d-salmon) solid;
+  display: inline-block;
+  vertical-align: top;
+  width:430px;
+  height:250px;
+  margin:10px;
+  color:var(--d-salmon);
+}
+
+#about h2{
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+  display:block;
+  font-weight: bold;
+  font-size:x-large;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:50px;
+  width:100%;
+  margin-bottom:10px;
+}
+
+#about p{
+  margin:5px;
+}
+
+/* LOCATIONS */
 
 #locations{
   width: 100%;

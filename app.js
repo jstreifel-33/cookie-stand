@@ -2,8 +2,9 @@
 
 //    GENERAL TOOLS TO MAKE LIFE EASIER    //
 
-function newChildNode(parent, child, content){
+function newChildNode(parent, child, content, ident){
   let cell = document.createElement(child);
+  if (ident){cell.id = ident;}
   cell.innerText = content;
   parent.appendChild(cell);
 }
@@ -107,6 +108,8 @@ CookieShop.prototype.renderHeader = function(){
 CookieShop.prototype.renderData = function(){
   if (!timeHeader){this.renderHeader();}
   //Add name to left header
+  let table = document.getElementById("salesTable");
+  newChildNode(table, 'tr', null, this.location);
   let parentEl = document.getElementById(this.location);
   let text = this.location;
   newChildNode(parentEl, 'th', text);

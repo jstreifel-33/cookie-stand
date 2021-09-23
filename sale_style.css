@@ -1,15 +1,33 @@
+h2{
+  color: var(--d-salmon);
+  display: block;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: xx-large;
+  height: 50px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
 td{
   text-align: center;
-  border-bottom: thin solid black;
+  border-bottom: thin solid var(--d-salmon);
 }
 
 table{
-  border: medium solid black;
+  background-color: var(--l-green);
+  border: thin solid black;
   border-collapse:collapse;
   width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 th{
-  border:thin solid black;
+  border:thin solid var(--d-salmon);
   padding:5px;
 }
+

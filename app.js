@@ -112,11 +112,11 @@ CookieShop.prototype.renderData = function(){
   newChildNode(table, 'tr', null, this.location);
   let parentEl = document.getElementById(this.location);
   let text = this.location;
-  newChildNode(parentEl, 'th', text);
+  newChildNode(parentEl, 'th', text, null);
   //step through hourly sales
   for (let i = 0; i < this.todaySales.length; i++){
     let text = this.todaySales[i][2];
-    newChildNode(parentEl, 'td', text);
+    newChildNode(parentEl, 'td', text, null);
   }
 };
 
@@ -194,17 +194,28 @@ tableTotals();
 
 let elShopSubmit = document.getElementById('addStore');
 
+let elNewMin = document.getElementById('newMinCust');
+let elNewMax = document.getElementById('newMaxCust');
+let elNewAvg = document.getElementById('newAvgSale');
+
 function addShop(formSubmit) {
   formSubmit.preventDefault();
   newShop = [];
   newShop.push(formSubmit.target.newShopLoc.value);
-  newShop.push(formSubmit.target.newMinCust.value);
-  newShop.push(formSubmit.target.newMaxCust.value);
-  newShop.push(formSubmit.target.newAvgSale.value);
+  newShop.push(parseFloat(elNewMin.value));
+  newShop.push(parseFloat(elNewMax.value));
+  newShop.push(parseFloat(elNewAvg.value));
 
   let newLocation = new CookieShop(newShop);
   newLocation.generateData();
+  newLocation.renderData();
   console.log(newLocation);
+
+  document.getElementById('Totals').remove();
+
+  let table = document.getElementById("salesTable");
+  newChildNode(table, 'tfoot', null, 'Totals');
+  tableTotals();
 }
 
 elShopSubmit.addEventListener('submit', addShop);

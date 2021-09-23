@@ -41,10 +41,10 @@ h1{
   font-family:'Courier New', Courier, monospace;
   display:inline-block;
   font-weight: bold;
-  font-size:xx-large;
+  font-size:3.5em;
   margin-left:auto;
   margin-right:auto;
-  height:75px;
+  height:150px;
 }
 
 header .cookie{
@@ -112,20 +112,26 @@ div#about img{
 
 #locations h2{
   background-color: var(--l-green);
-  display: block;
-  font-size: x-large;
-  font-weight:bolder;
-  width:50%;
-  margin:20px auto 20px auto;
-  
+  color: var(--d-salmon);
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+  display:block;
+  font-weight: bold;
+  font-size:xx-large;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:50px;
+  width:100%;
+  margin-bottom:10px;
 }
 
 .store{
-  background-color: var(--d-salmon);
+  background-color: var(--l-green);
+  border:thick var(--d-salmon) solid;
   display: inline-block;
   width:300px;
-  margin:15px;
-  color:var(--l-salmon)
+  margin:10px;
+  color:var(--d-salmon);
 }
 
 .location{
@@ -134,8 +140,10 @@ div#about img{
   text-decoration: underline;
 }
 .store img{
+  display: block;
   width:80%;
   height:auto;
+  margin: auto;
 }
 
 
@@ -147,4 +155,11 @@ footer{
   border:thick var(--d-salmon) solid;
   margin-top:10px;
   margin-bottom:10px;
+  padding:5px;
+}
+
+footer p{
+  display:block;
+  width:100%;
+  text-align: center;
 }

@@ -44,6 +44,25 @@
         
       </tfoot>
     </table>
+    <form id="Add Store">
+      <fieldset>
+        <legend>Add New Store</legend>
+
+        <label for="shopLoc">Location:</label>
+        <input name="shopLoc" type="text" id="shopLoc" required>
+
+        <label for="minCust">Minimum Customers Per Hour:</label>
+        <input name="minCust" type="number" id="minCust" required>
+
+        <label for="maxCust">Maximum Customers Per Hour:</label>
+        <input type="number" name="maxCust" id="maxCust" required>
+
+        <label for="avgSale">Average Cookies Sold:</label>
+        <input type="number" name="avgSale" id="avgSale" required>
+
+        <input type="submit" value="Add Store">
+      </fieldset>
+    </form>
   </main>
   <script src="app.js" defer></script>
 </body>

@@ -186,3 +186,23 @@ let timeHeader = false;
 refreshAllData();
 renderTable();
 tableTotals();
+
+//    ADD STORE    //
+
+let elShopSubmit = document.getElementById('addStore');
+
+function addShop(formSubmit) {
+  formSubmit.preventDefault();
+  newShop = [];
+  newShop.push(formSubmit.target.newShopLoc.value);
+  newShop.push(formSubmit.target.newMinCust.value);
+  newShop.push(formSubmit.target.newMaxCust.value);
+  newShop.push(formSubmit.target.newAvgSale.value);
+
+  let newLocation = new CookieShop(newShop);
+  newLocation.generateData();
+  console.log(newLocation);
+}
+
+elShopSubmit.addEventListener('submit', addShop);
+

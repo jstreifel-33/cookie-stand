@@ -1,0 +1,40 @@
+/* RESET STYLE */
+
+@import url(reset.css);
+
+/* GLOBAL */
+*{
+  display:inline-block;
+}
+
+title{
+  visibility: hidden;
+}
+
+/* HEADER */
+
+header{
+  width:960px;
+}
+
+h1{
+  font-weight: bold;
+  font-size: larger;
+}
+
+header .cookie{
+  max-width:20%;
+  height:auto;
+}
+
+/* MAIN */
+
+main{
+  width:960px;
+}
+
+
+/* FOOTER */
+footer{
+  width:960px;
+}

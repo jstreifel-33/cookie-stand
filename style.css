@@ -19,14 +19,20 @@ title{
   visibility: hidden;
 }
 
+body{
+  background-color: var(--salmon);
+}
 /* HEADER */
 
 header{
   background-color: var(--l-green);
   position:relative;
   display:flex;
-  width:960px;
+  width:1000px;
   height:200px;
+  margin:auto;
+  margin-bottom: 10px;
+  border:thick var(--d-salmon) solid;
 }
 
 h1{
@@ -56,18 +62,19 @@ nav{
   background-color: var(--l-salmon);
   display:inline-flex;
   height:50px;
-  width:960px;
+  width:100%;
   position:absolute;
   bottom:0px;
   justify-content: end;
-  
+  border-top:thick solid var(--d-salmon);
 }
 
 nav a{
+  font-size: large;
   display:inline-block;
   box-sizing: border-box;
   width:100px;
-  line-height:40px;
+  line-height:35px;
   color:white;
   text-align: center;
   text-decoration: none;
@@ -87,15 +94,57 @@ nav a:hover{
 /* MAIN */
 
 main{
-  width:960px;
+  background-color: var(--d-green);
+  width:1000px;
+  margin:auto;
+  border:thick var(--d-salmon) solid;
 }
 
 div#about img{
   
 }
 
+#locations{
+  width: 100%;
+  align-content: center;
+  border-top:thick var(--d-salmon) solid;
+}
+
+#locations h2{
+  background-color: var(--l-green);
+  display: block;
+  font-size: x-large;
+  font-weight:bolder;
+  width:50%;
+  margin:20px auto 20px auto;
+  
+}
+
+.store{
+  background-color: var(--d-salmon);
+  display: inline-block;
+  width:300px;
+  margin:15px;
+  color:var(--l-salmon)
+}
+
+.location{
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.store img{
+  width:80%;
+  height:auto;
+}
+
 
 /* FOOTER */
 footer{
-  width:960px;
+  background-color: var(--d-green);
+  width:1000px;
+  margin:auto;
+  border:thick var(--d-salmon) solid;
+  margin-top:10px;
+  margin-bottom:10px;
 }

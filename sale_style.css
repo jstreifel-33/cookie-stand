@@ -1,15 +1,20 @@
+
+
 td{
   text-align: center;
-  border-bottom: thin solid black;
+  border-bottom: thin solid var(--d-salmon);
 }
 
 table{
-  border: medium solid black;
+  border: thin solid black;
   border-collapse:collapse;
   width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 th{
-  border:thin solid black;
+  border:thin solid var(--d-salmon);
   padding:5px;
 }
+

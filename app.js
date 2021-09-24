@@ -209,6 +209,11 @@ function addShop(formSubmit) {
   newShop.push(parseFloat(elNewMax.value));
   newShop.push(parseFloat(elNewAvg.value));
 
+  if(document.getElementById(newShop[0])){
+    alert('Shop already exists!');
+    return;
+  }
+
   let newLocation = new CookieShop(newShop);
 
   //create and render store data

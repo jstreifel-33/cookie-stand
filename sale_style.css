@@ -12,22 +12,54 @@ h2{
   margin-top: 30px;
 }
 
-td{
+main{
+  width:1100px;
+}
+
+tr, tfoot{
   text-align: center;
-  border-bottom: thin solid var(--d-salmon);
+  border: thin solid var(--d-salmon);
 }
 
 table{
   background-color: var(--l-green);
-  border: thin solid black;
+  border-top: medium solid var(--d-salmon);
+  border-bottom: medium solid var(--d-salmon);
   border-collapse:collapse;
   width:100%;
   margin-top:20px;
-  margin-bottom:20px;
 }
 
 th{
+  font-weight: bold;
   border:thin solid var(--d-salmon);
   padding:5px;
 }
 
+form{
+  background-color: var(--l-green);
+  width:900px;
+  margin:25px auto;
+  border: medium solid var(--d-salmon);
+}
+
+legend{
+  display: block;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+  margin:20px;
+}
+
+.field{
+  display: inline-block;
+  width:45%;
+  margin:auto;
+  text-align:right;
+  margin:5px;
+}
+
+#submit{
+  display: block;
+  margin: 10px auto;
+}

@@ -2,6 +2,7 @@
 
 //    GENERAL TOOLS TO MAKE LIFE EASIER    //
 
+//parent and child required. content and ident optional (set to null if not needed).
 function newChildNode(parent, child, content, ident){
   let cell = document.createElement(child);
   if (ident){cell.id = ident;}
@@ -108,7 +109,7 @@ CookieShop.prototype.renderHeader = function(){
 CookieShop.prototype.renderData = function(){
   if (!timeHeader){this.renderHeader();}
   //Add name to left header
-  let table = document.getElementById("salesTable");
+  let table = document.querySelector('#salesTable tbody');
   newChildNode(table, 'tr', null, this.location);
   let parentEl = document.getElementById(this.location);
   let text = this.location;
@@ -192,14 +193,16 @@ tableTotals();
 
 //    ADD STORE    //
 
+//Define variables to be used for Add Store event
 let elShopSubmit = document.getElementById('addStore');
-
 let elNewMin = document.getElementById('newMinCust');
 let elNewMax = document.getElementById('newMaxCust');
 let elNewAvg = document.getElementById('newAvgSale');
 
+//create event handler
 function addShop(formSubmit) {
   formSubmit.preventDefault();
+  //generate new store
   newShop = [];
   newShop.push(formSubmit.target.newShopLoc.value);
   newShop.push(parseFloat(elNewMin.value));
@@ -207,16 +210,20 @@ function addShop(formSubmit) {
   newShop.push(parseFloat(elNewAvg.value));
 
   let newLocation = new CookieShop(newShop);
+
+  //create and render store data
   newLocation.generateData();
   newLocation.renderData();
-  console.log(newLocation);
 
+  //console.log(newLocation);
+
+  //remove, recalculate, and render totals to table
   document.getElementById('Totals').remove();
-
-  let table = document.getElementById("salesTable");
+  let table = document.getElementById('salesTable');
   newChildNode(table, 'tfoot', null, 'Totals');
   tableTotals();
 }
 
+//Event listener for Add Store
 elShopSubmit.addEventListener('submit', addShop);
 

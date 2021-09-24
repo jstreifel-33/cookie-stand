@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="sale_style.css">
 </head>
+
 <body>
 
   <header>
-    <img class="cookie"src="Assets/frosted-cookie.jpg" alt="fishy image">
+    <img class="cookie" src="Assets/frosted-cookie.jpg" alt="fishy image">
     <h1>Pat's Famous<br>Salmon Cookies</h1>
     <nav class="sitenav">
       <a href="index.html">Home</a>
@@ -20,31 +22,44 @@
     </nav>
   </header>
   <main>
-    <h2>Sales by Location</h1>
-    <table>
-      <tr id = "time">
-        <th id="placeholder"></th>
-      </tr>
-      <tr id="Seattle">
+    <h2>Sales by Location</h2>
+      <table id="salesTable">
+        <tr id="time">
+          <th id="placeholder"></th>
+        </tr>
+        <tfoot id="Totals">
 
-      </tr>
-      <tr id="Tokyo">
+        </tfoot>
+      </table>
+      <form id="addStore">
+        <fieldset>
+          <legend>Add New Store</legend>
 
-      </tr>
-      <tr id="Dubai">
+          <p class="field">
+            <label for="newShopLoc">Location:</label>
+            <input type="text" name="newShopLoc" id="newShopLoc" required>
+          </p>
 
-      </tr>
-      <tr id="Paris">
+          <p class="field">
+            <label for="newMinCust">Minimum Customers Per Hour:</label>
+            <input type="number" name="newMinCust" id="newMinCust" required>
+          </p>
 
-      </tr>
-      <tr id="Lima">
+          <p class="field">
+            <label for="newMaxCust">Maximum Customers Per Hour:</label>
+            <input type="number" name="newMaxCust" id="newMaxCust" required>
+          </p>
 
-      </tr>
-      <tfoot id="Totals">
-        
-      </tfoot>
-    </table>
+          <p class="field">
+            <label for="newAvgSale">Average Cookies Sold:</label>
+            <input type="number" name="newAvgSale" id="newAvgSale" required>
+          </p>
+
+          <input type="submit" value="Add Store" id="submit">
+        </fieldset>
+      </form>
   </main>
   <script src="app.js" defer></script>
 </body>
+
 </html>

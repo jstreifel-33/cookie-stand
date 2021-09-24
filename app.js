@@ -2,8 +2,10 @@
 
 //    GENERAL TOOLS TO MAKE LIFE EASIER    //
 
-function newChildNode(parent, child, content){
+//parent and child required. content and ident optional (set to null if not needed).
+function newChildNode(parent, child, content, ident){
   let cell = document.createElement(child);
+  if (ident){cell.id = ident;}
   cell.innerText = content;
   parent.appendChild(cell);
 }
@@ -107,13 +109,15 @@ CookieShop.prototype.renderHeader = function(){
 CookieShop.prototype.renderData = function(){
   if (!timeHeader){this.renderHeader();}
   //Add name to left header
+  let table = document.querySelector('#salesTable tbody');
+  newChildNode(table, 'tr', null, this.location);
   let parentEl = document.getElementById(this.location);
   let text = this.location;
-  newChildNode(parentEl, 'th', text);
+  newChildNode(parentEl, 'th', text, null);
   //step through hourly sales
   for (let i = 0; i < this.todaySales.length; i++){
     let text = this.todaySales[i][2];
-    newChildNode(parentEl, 'td', text);
+    newChildNode(parentEl, 'td', text, null);
   }
 };
 
@@ -186,3 +190,40 @@ let timeHeader = false;
 refreshAllData();
 renderTable();
 tableTotals();
+
+//    ADD STORE    //
+
+//Define variables to be used for Add Store event
+let elShopSubmit = document.getElementById('addStore');
+let elNewMin = document.getElementById('newMinCust');
+let elNewMax = document.getElementById('newMaxCust');
+let elNewAvg = document.getElementById('newAvgSale');
+
+//create event handler
+function addShop(formSubmit) {
+  formSubmit.preventDefault();
+  //generate new store
+  newShop = [];
+  newShop.push(formSubmit.target.newShopLoc.value);
+  newShop.push(parseFloat(elNewMin.value));
+  newShop.push(parseFloat(elNewMax.value));
+  newShop.push(parseFloat(elNewAvg.value));
+
+  let newLocation = new CookieShop(newShop);
+
+  //create and render store data
+  newLocation.generateData();
+  newLocation.renderData();
+
+  //console.log(newLocation);
+
+  //remove, recalculate, and render totals to table
+  document.getElementById('Totals').remove();
+  let table = document.getElementById('salesTable');
+  newChildNode(table, 'tfoot', null, 'Totals');
+  tableTotals();
+}
+
+//Event listener for Add Store
+elShopSubmit.addEventListener('submit', addShop);
+

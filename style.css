@@ -1,5 +1,5 @@
 /* RESET STYLE */
-
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url(reset.css);
 
 /* COLOR PALLETTE */
@@ -38,7 +38,7 @@ header{
 h1{
   color: var(--d-salmon);
   text-align: center;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Fredericka the Great', cursive;
   display:inline-block;
   font-weight: bold;
   font-size:3.5em;
@@ -122,9 +122,8 @@ main{
 }
 
 #about h2{
-  text-decoration: underline;
   text-align: center;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Fredericka the Great', cursive;
   display:block;
   font-weight: bold;
   font-size:x-large;
@@ -151,7 +150,7 @@ main{
   background-color: var(--l-green);
   color: var(--d-salmon);
   text-align: center;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Fredericka the Great', cursive;
   display:block;
   font-weight: bold;
   font-size:xx-large;

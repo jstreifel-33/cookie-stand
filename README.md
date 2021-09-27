@@ -1,8 +1,8 @@
-# LAB - 09
+# LAB - 10
 
-## Salmon Cookies Forms and Events
+## Deployment of Salmon Cookies
 
-Create a form to add new stores to the sales page
+Complete any outstanding requirements and deploy website to GitHub Pages.
 
 ### Authors: Joseph Streifel
 
@@ -14,6 +14,4 @@ Create a form to add new stores to the sales page
 
 ### Reflections and Comments
 
-This is the first lab where I started off feeling uneasy about my grasp of the content. I feel like after working through it event handlers and listeners make more sense to me, which is a relief.
-
-It's funny how after actually grabbing the information from the form, this really didn't require much JS. The framework for almost everything else was there already. I modified the functionality of a few existing functions but all in all the implementation was smooth on this one.
+It's finally time to lay salmon cookies to rest. GitHub Pages doesn't default to the homepage right now, so if you try to reach the deployment from the repo, add "index.html" to the end of the directory that it tries to open.

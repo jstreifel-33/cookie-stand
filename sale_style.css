@@ -42,6 +42,7 @@ form{
   width:900px;
   margin:25px auto;
   border: medium solid var(--d-salmon);
+  color: #6d2f28;
 }
 
 legend{

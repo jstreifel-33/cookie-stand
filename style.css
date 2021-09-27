@@ -136,6 +136,7 @@ main{
 
 #about p{
   margin:10px;
+  color:#6d2f28
 }
 
 /* LOCATIONS */
@@ -169,7 +170,7 @@ main{
   width:300px;
   margin:10px;
   padding:5px;
-  color:var(--d-salmon);
+  color: #6d2f28;
 }
 
 .storeLoc{
@@ -200,4 +201,5 @@ footer p{
   display:block;
   width:100%;
   text-align: center;
+  color: #6d2f28;
 }
